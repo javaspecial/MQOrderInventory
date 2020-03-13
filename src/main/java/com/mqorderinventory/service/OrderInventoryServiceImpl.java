@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.mqorderinventory.messaging.MessageSender;
 import com.mqorderinventory.model.InventoryResponse;
 import com.mqorderinventory.model.Order;
@@ -18,9 +17,6 @@ public class OrderInventoryServiceImpl implements OrderInventoryService{
 	
 	@Override
 	public void processOrder(Order order) {
-		
-		//Perform any business logic.
-		
 		InventoryResponse response = prepareResponse(order);
 		LOG.info("Inventory : sending order confirmation {}", response);
 		messageSender.sendMessage(response);
@@ -34,6 +30,4 @@ public class OrderInventoryServiceImpl implements OrderInventoryService{
 		return response;
 	}
 
-	
-	
 }

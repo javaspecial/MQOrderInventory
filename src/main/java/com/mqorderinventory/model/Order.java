@@ -2,9 +2,9 @@ package com.mqorderinventory.model;
 
 import java.io.Serializable;
 
-public class Order implements Serializable {
+public class Order implements Serializable{
 
-	private static final long serialVersionUID = 8156100242015883119L;
+	private static final long serialVersionUID = 1L;
 	private String orderId;
 	private String productName;
 	private int quantity;

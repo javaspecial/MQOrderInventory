@@ -3,6 +3,7 @@ package com.mqorderinventory.configuration;
 import java.util.Arrays;
 
 import org.apache.activemq.spring.ActiveMQConnectionFactory;
+import org.apache.activemq.util.ClassLoadingAwareObjectInputStream;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.core.JmsTemplate;
@@ -18,8 +19,7 @@ public class MessagingConfiguration {
 	public ActiveMQConnectionFactory connectionFactory() {
 		ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory();
 		connectionFactory.setBrokerURL(DEFAULT_BROKER_URL);
-		connectionFactory.setTrustedPackages(Arrays.asList("com.mqorderinventory.model"));
-//		connectionFactory.setTrustAllPackages(true);
+		connectionFactory.setTrustedPackages(Arrays.asList(ClassLoadingAwareObjectInputStream.serializablePackages));
 		return connectionFactory;
 	}
 
